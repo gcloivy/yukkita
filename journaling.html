@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Journaling - YukKita</title>
+    <link rel="stylesheet" href="css/fitur.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="header-left">
+        <img src="assets/logoyukkita.png" class="logo">
+        <div class="divider"></div>
+        <div class="menu-active">
+            <img src="assets/journaling.png">
+        </div>
+    </div>
+
+    <div class="profile" onclick="toggleProfile()">
+        <span id="hiUser">Hi</span>
+        <div class="profile-icon">👤</div>
+    </div>
+</div>
+
+<!-- PROFILE DASHBOARD -->
+<div id="profileSlide" class="profile-slide">
+    <p><b>Nama:</b> <span id="pNama"></span></p>
+    <p><b>Email:</b> <span id="pEmail"></span></p>
+    <p><b>Usia:</b> <span id="pUsia"></span></p>
+    <p><b>Gender:</b> <span id="pGender"></span></p>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+    <img src="assets/4.png">
+    <div class="desc">
+        Menyediakan platform interaktif untuk memandu dan
+        berolahraga ringan bersama teman atau keluarga secara
+        virtual, sambil menyelesaikan tantangan sehat.
+
+        <div class="btn-group">
+            <button class="btn" onclick="history.back()">←</button>
+            <button class="btn" onclick="scrollDown()">Mulai</button>
+        </div>
+    </div>
+</div>
+
+<!-- FITUR UTAMA -->
+<div id="fitur-utama">
+    <h2>Fitur utama akan ditampilkan di sini</h2>
+</div>
+
+<script>
+const nama = localStorage.getItem("namaUser");
+document.getElementById("hiUser").innerText = "Hi " + nama;
+
+function toggleProfile(){
+    document.getElementById("profileSlide").classList.toggle("show");
+}
+
+function logout(){
+    localStorage.clear();
+    window.location.href = "index.html";
+}
+
+function scrollDown(){
+    document.getElementById("fitur-utama")
+    .scrollIntoView({ behavior: "smooth" });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Sharing Session - YukKita</title>
+    <link rel="stylesheet" href="css/fitur.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="header-left">
+        <img src="assets/logoyukkita.png" class="logo">
+        <div class="divider"></div>
+        <div class="menu-active">
+            <img src="assets/sharingsession.png">
+        </div>
+    </div>
+
+    <div class="profile" onclick="toggleProfile()">
+        <span id="hiUser">Hi</span>
+        <div class="profile-icon">👤</div>
+    </div>
+</div>
+
+<!-- PROFILE DASHBOARD -->
+<div id="profileSlide" class="profile-slide">
+    <p><b>Nama:</b> <span id="pNama"></span></p>
+    <p><b>Email:</b> <span id="pEmail"></span></p>
+    <p><b>Usia:</b> <span id="pUsia"></span></p>
+    <p><b>Gender:</b> <span id="pGender"></span></p>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+    <img src="assets/3.png">
+    <div class="desc">
+        Menyediakan <b>platform digital</b> untuk mengikuti
+        <b>sesi berbagi</b> seperti renungan pagi, cerita hidup,
+        dan diskusi ringan yang membangun semangat.
+
+        <div class="btn-group">
+            <button class="btn" onclick="history.back()">←</button>
+            <button class="btn" onclick="scrollDown()">Mulai</button>
+        </div>
+    </div>
+</div>
+
+<!-- FITUR UTAMA -->
+<script>
+const nama = localStorage.getItem("namaUser");
+document.getElementById("hiUser").innerText = "Hi " + nama;
+
+function toggleProfile(){
+    document.getElementById("profileSlide").classList.toggle("show");
+}
+
+function logout(){
+    localStorage.clear();
+    window.location.href = "index.html";
+}
+
+function scrollDown(){
+    document.getElementById("fitur-utama")
+    .scrollIntoView({ behavior: "smooth" });
+}
+</script>
+
+<script>
+function gantiRenungan(gambar, audio, tanggal){
+    document.querySelector(".hero-renungan img").src = gambar;
+    document.querySelector(".audio-thumb").src = gambar;
+    document.querySelector(".audio-info span").innerText = tanggal;
+
+    const audioPlayer = document.getElementById("audioPlayer");
+    audioPlayer.src = audio;
+    audioPlayer.play();
+
+    document.getElementById("fitur-utama").scrollIntoView({behavior:"smooth"});
+}
+</script>
+
+<script>
+const audio = document.getElementById("audioPlayer");
+const playBtn = document.querySelector(".play");
+
+function toggleAudio(){
+    if(audio.paused){
+        audio.play();
+        playBtn.innerText = "⏸";
+    }else{
+        audio.pause();
+        playBtn.innerText = "▶";
+    }
+}
+</script>
+
+
+</body>
+</html>
+
+<div id="fitur-utama">
+
+    <!-- HEADER GAMBAR -->
+    <div class="hero-renungan">
+        <img src="assets/alam1.png">
+    </div>
+
+    <!-- AUDIO PLAYER -->
+    <div class="audio-card">
+        <img src="assets/alam2.png" class="audio-thumb">
+
+        <div class="audio-info">
+            <h3>Renungan<br>Suara Gembala</h3>
+            <span>Senin, 22 Desember 2025</span>
+
+            <div class="custom-audio">
+                <button class="audio-btn">⏮</button>
+                <button class="audio-btn play" onclick="toggleAudio()">▶</button>
+                <button class="audio-btn">⏭</button>
+            </div>
+
+            <input type="range" class="audio-progress" value="0">
+        </div>
+
+        <audio id="audioPlayer">
+            <source src="audiorenungan/audio renungan 22-12-2025.ogg" type="audio/ogg">
+        </audio>
+    </div>
+
+
+    <!-- CATATAN -->
+    <div class="note-section">
+        <h2>Apakah anda terberkati<br>melalui renungan ini?</h2>
+        <textarea placeholder="Tulis notes, sharing, atau pokok doa anda disini..."></textarea>
+    </div>
+
+    <!-- RENUNGAN SETIAP HARI -->
+    <div class="daily-renungan">
+        <h3>Renungan setiap hari</h3>
+
+        <div class="renungan-scroll">
+
+            <div class="renungan-card" onclick="gantiRenungan('assets/alam3.png','audiorenungan/audio-renungan-18-12-2025.mp3','Kamis, 18 Desember 2025')">
+                <img src="assets/alam3.png">
+                <p>Renungan<br>Suara Gembala</p>
+                <span>Kamis, 18 Desember 2025</span>
+            </div>
+
+            <div class="renungan-card" onclick="gantiRenungan('assets/alam3.png','audiorenungan/audio-renungan-19-12-2025.mp3','Jumat, 19 Desember 2025')">
+                <img src="assets/alam3.png">
+                <p>Renungan<br>Suara Gembala</p>
+                <span>Jumat, 19 Desember 2025</span>
+            </div>
+
+            <div class="renungan-card">
+                <img src="assets/alam2.png">
+                <p>Renungan<br>Suara Gembala</p>
+                <span>Sabtu, 20 Desember 2025</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- RIWAYAT CATATAN -->
+    <div class="history-note">
+        <h3>Riwayat catatan renungan</h3>
+
+        <div class="renungan-scroll">
+            <div class="renungan-card">
+                <img src="assets/alam3.png">
+                <span>Jumat, 19 Desember 2025</span>
+            </div>
+            <div class="renungan-card">
+                <img src="assets/alam2.png">
+                <span>Sabtu, 20 Desember 2025</span>
+            </div>
+        </div>
+    </div>
+
+</div>

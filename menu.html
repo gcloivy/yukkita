@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu - YukKita!</title>
+    <link rel="stylesheet" href="css/menu.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="top-bar">
+    <div class="logo-area">
+        <img src="assets/logoyukkita.png" alt="YukKita Logo" class="logo-img">
+    </div>
+
+    <h2>Pilih aktivitas mu</h2>
+
+    <div class="profile" onclick="toggleProfile()">
+        <span id="usernameText">Hi Pengguna</span>
+        <div class="profile-icon">👤</div>
+    </div>
+</header>
+
+
+<!-- PROFILE DASHBOARD -->
+<div id="profileSlide" class="profile-slide">
+    <p><b>Nama:</b> <span id="pNama"></span></p>
+    <p><b>Email:</b> <span id="pEmail"></span></p>
+    <p><b>Usia:</b> <span id="pUsia"></span></p>
+    <p><b>Gender:</b> <span id="pGender"></span></p>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+<!-- MENU -->
+<section class="menu-container">
+
+    <div class="menu-card">
+        <a href="aktifbareng.html">
+            <img src="assets/aktifbarengdisplay.png" alt="AktifBareng">
+        </a>
+        <a href="aktifbareng.html" class="menu-btn">aktifbareng</a>
+    </div>
+
+    <div class="menu-card">
+        <a href="ngobrolyuk.html">
+            <img src="assets/ngobrolyukdisplay.png" alt="NgobrolYuk">
+        </a>
+        <a href="ngobrolyuk.html" class="menu-btn">ngobrolyuk</a>
+    </div>
+
+    <div class="menu-card">
+        <a href="sharingsession.html">
+            <img src="assets/sharingsessiondisplay.png" alt="Sharing Session">
+        </a>
+        <a href="sharingsession.html" class="menu-btn">sharingsession</a>
+    </div>
+
+    <div class="menu-card">
+        <a href="journaling.html">
+            <img src="assets/journalingdisplay.png" alt="Journaling">
+        </a>
+        <a href="journaling.html" class="menu-btn">journaling</a>
+    </div>
+
+</section>
+
+
+
+<script src="js/menu.js"></script>
+</body>
+</html>
+
