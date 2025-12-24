@@ -68,24 +68,35 @@ function scrollDown(){
 </script>
 
 <script>
-function gantiRenungan(gambar, audio, tanggal){
+function gantiRenungan(gambar, audioSrc, tanggal){
     document.querySelector(".hero-renungan img").src = gambar;
     document.querySelector(".audio-thumb").src = gambar;
     document.querySelector(".audio-info span").innerText = tanggal;
 
     const audioPlayer = document.getElementById("audioPlayer");
-    audioPlayer.src = audio;
+    audioPlayer.src = audioSrc;
     audioPlayer.play();
 
-    document.getElementById("fitur-utama").scrollIntoView({behavior:"smooth"});
+    document.querySelector(".play").innerText = "⏸";
+
+    document.getElementById("fitur-utama")
+    .scrollIntoView({behavior:"smooth"});
 }
 </script>
 
+
 <script>
-const audio = document.getElementById("audioPlayer");
-const playBtn = document.querySelector(".play");
+let audio;
+let playBtn;
+
+document.addEventListener("DOMContentLoaded", function () {
+    audio = document.getElementById("audioPlayer");
+    playBtn = document.querySelector(".play");
+});
 
 function toggleAudio(){
+    if(!audio) return;
+
     if(audio.paused){
         audio.play();
         playBtn.innerText = "⏸";
@@ -96,9 +107,6 @@ function toggleAudio(){
 }
 </script>
 
-
-</body>
-</html>
 
 <div id="fitur-utama">
 
@@ -125,9 +133,13 @@ function toggleAudio(){
         </div>
 
         <audio id="audioPlayer">
-            <source src="audiorenungan/audio renungan 22-12-2025.ogg" type="audio/ogg">
+            <source src="audiorenungan/audio-renungan-22-12-2025.ogg" type="audio/ogg">
         </audio>
+
     </div>
+
+    </body>
+    </html>
 
 
     <!-- CATATAN -->
